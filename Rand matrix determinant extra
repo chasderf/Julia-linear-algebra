@@ -1,0 +1,45 @@
+julia> using LinearAlgebra
+
+julia> A = rand(4,4)
+4×4 Matrix{Float64}:
+ 0.763485  0.146473   0.293102  0.0757701
+ 0.254412  0.0241832  0.111579  0.0164307
+ 0.277982  0.841106   0.731431  0.940267
+ 0.231789  0.493258   0.535893  0.127341
+
+julia> typeof(A)
+Matrix{Float64} (alias for Array{Float64, 2})
+
+julia> Array{Float64, 2} === Matrix{Float64}
+true
+
+julia> det(A)
+0.009437691404226213
+
+julia> inv(A)
+4×4 Matrix{Float64}:
+  3.32115   -5.42501  -0.0978962  -0.553308
+  8.94999  -27.7239   -0.436208    1.47269
+ -9.24816   26.4864    0.112283    1.25621
+ -1.79387    5.8003    1.39533    -2.13101
+
+julia> rank(A)
+4
+
+julia>
+
+julia> v = rand(4)
+4-element Vector{Float64}:
+ 0.09896453247834558
+ 0.7061461968016772
+ 0.7536742688881289
+ 0.16086624256311777
+
+julia>      typeof(v)
+Vector{Float64} (alias for Array{Float64, 1})
+
+julia> Array{Float64,1} === Vector{Float64}
+true
+
+julia> norm(v)
+1.049923464604236
