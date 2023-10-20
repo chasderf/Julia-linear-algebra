@@ -1,0 +1,19 @@
+julia> using LinearAlgebra
+
+julia> D = Diagonal(1:5)
+5×5 Diagonal{Int64, UnitRange{Int64}}:
+ 1  ⋅  ⋅  ⋅  ⋅
+ ⋅  2  ⋅  ⋅  ⋅
+ ⋅  ⋅  3  ⋅  ⋅
+ ⋅  ⋅  ⋅  4  ⋅
+ ⋅  ⋅  ⋅  ⋅  5
+
+julia> Ddense = Matrix(D)
+5×5 Matrix{Int64}:
+ 1  0  0  0  0
+ 0  2  0  0  0
+ 0  0  3  0  0
+ 0  0  0  4  0
+ 0  0  0  0  5
+
+julia>
