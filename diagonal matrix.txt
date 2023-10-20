@@ -1,0 +1,8 @@
+julia> struct DiagonalMat
+       diag::Vector{Float64}
+       end
+
+julia> DiagonalMat([1.2,4.3,5.0])
+DiagonalMat([1.2, 4.3, 5.0])
+
+julia>
