@@ -1,0 +1,32 @@
+julia> A .+3
+4×4 Matrix{Float64}:
+ 3.08306  3.47945  3.31152  3.54095
+ 3.78317  3.17476  3.83867  3.44642
+ 3.42297  3.01816  3.28894  3.91778
+ 3.44792  3.28784  3.11782  3.59696
+
+julia> I
+UniformScaling{Bool}
+true*I
+
+julia> A +3I
+4×4 Matrix{Float64}:
+ 3.08306   0.479454   0.311516  0.540953
+ 0.783172  3.17476    0.838668  0.446425
+ 0.422967  0.0181619  3.28894   0.917775
+ 0.447916  0.287835   0.117821  3.59696
+
+julia> I * A == A
+true
+
+julia> fast(A) = A +3*I
+fast (generic function with 1 method)
+
+julia> slow(A, fullI) = A + 3*fullI
+slow (generic function with 1 method)
+
+julia> function slower(A)
+       fullI = Matrix(1.0I, size(A)...)
+       a + 3*fullI
+       end
+slower (generic function with 1 method)
