@@ -1,0 +1,14 @@
+julia> typeof(3)
+Int64
+
+julia> typeof(3.0)
+Float64
+
+julia> isconcretetype(Float64)
+true
+
+julia> isabstracttype(Number)
+true
+
+julia> isabstracttype(Real)
+true
