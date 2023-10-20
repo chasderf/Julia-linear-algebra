@@ -1,0 +1,16 @@
+BunchKaufman Bunch-Kaufman factorization
+Cholesky     Cholesky factorization
+CholeskyPivoted Pivoted Cholesky factorization
+LDLt	      LDL(T) factorization
+LU 	      LU factorization
+QR	      QR factorization
+QRCompactWY   Compact WY form of the QR factorization
+QRPivoted      Pivoted QR factorization
+LQ		QR factorization of tanspose(A)
+Hessenberg       Hessenberg decomposition
+Eigen 		 Spectral decomposition
+GeneralizedEigen Generalized spectral decomposition
+SVD		 Singular value decomposition
+GeneralizedSVD	 Generalized SVD
+Schur            Shur decomposition
+GeneralizedSchur Generalized Schur Decomposition
