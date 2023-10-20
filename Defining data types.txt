@@ -1,0 +1,155 @@
+julia> struct MyType end
+
+julia> methods(MyType)
+# 1 method for type constructor:
+ [1] MyType()
+     @ REPL[1]:1
+
+julia> m = MyType()
+MyType()
+
+julia> typeof(m)
+MyType
+
+julia> m isa MyType
+true
+
+julia> struct A
+       x::Int64
+       end
+
+julia> A()
+ERROR: MethodError: no method matching A()
+
+Closest candidates are:
+  A(::Int64)
+   @ Main REPL[6]:2
+  A(::Any)
+   @ Main REPL[6]:2
+
+Stacktrace:
+ [1] top-level scope
+   @ REPL[7]:1
+
+julia> M()
+ERROR: UndefVarError: `M` not defined
+Stacktrace:
+ [1] top-level scope
+   @ REPL[8]:1
+
+julia> m()
+ERROR: MethodError: objects of type MyType are not callable
+Stacktrace:
+ [1] top-level scope
+   @ REPL[9]:1
+
+julia> A(3)
+A(3)
+
+julia> a = A(3)
+A(3)
+
+julia> a.x
+3
+
+julia> a.x = 2
+ERROR: setfield!: immutable struct of type A cannot be changed
+Stacktrace:
+ [1] setproperty!(x::A, f::Symbol, v::Int64)
+   @ Base .\Base.jl:38
+ [2] top-level scope
+   @ REPL[13]:1
+
+julia> a.x = 2
+ERROR: setfield!: immutable struct of type A cannot be changed
+Stacktrace:
+ [1] setproperty!(x::A, f::Symbol, v::Int64)
+   @ Base .\Base.jl:38
+ [2] top-level scope
+   @ REPL[13]:1
+
+julia> mutable struct B
+       x::Int64
+       end
+
+julia> b = B(3)
+B(3)
+
+julia> b.x
+3
+
+julia> b.x = 4
+4
+
+julia> b.x
+4
+
+julia> struct C
+       x::Vector{Int64}
+       end
+
+julia> c = C([1, 2, 3])
+C([1, 2, 3])
+
+julia> c.x
+3-element Vector{Int64}:
+ 1
+ 2
+ 3
+
+julia> c.x = [3,4,5]
+ERROR: setfield!: immutable struct of type C cannot be changed
+Stacktrace:
+ [1] setproperty!(x::C, f::Symbol, v::Vector{Int64})
+   @ Base .\Base.jl:38
+ [2] top-level scope
+   @ REPL[22]:1
+
+julia> c.x = [3, 4, 5]
+ERROR: setfield!: immutable struct of type C cannot be changed
+Stacktrace:
+ [1] setproperty!(x::C, f::Symbol, v::Vector{Int64})
+   @ Base .\Base.jl:38
+ [2] top-level scope
+   @ REPL[23]:1
+
+julia> c.x[1] = 3
+3
+
+julia> c.x
+3-element Vector{Int64}:
+ 3
+ 2
+ 3
+
+julia> c.x .= [3,4,5]
+3-element Vector{Int64}:
+ 3
+ 4
+ 5
+
+julia> abstract type MyAbstractType end
+
+julia> struct MyConcreteType <: MyAbstractType
+       somefield::string
+       end
+ERROR: TypeError: in MyConcreteType, in type definition, expected Type, got a value of type typeof(string)
+Stacktrace:
+ [1] top-level scope
+   @ REPL[28]:1
+
+julia> c = MyConcreteType("test")
+ERROR: MethodError: no method matching MyConcreteType(::String)
+Stacktrace:
+ [1] top-level scope
+   @ REPL[29]:1
+
+julia> c isa MyAbstractType
+false
+
+julia> supertype(MyConcreteType)
+MyAbstractType
+
+julia> subtypes(MyAbstractType)
+1-element Vector{Any}:
+ MyConcreteType
