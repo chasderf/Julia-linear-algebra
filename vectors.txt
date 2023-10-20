@@ -1,0 +1,21 @@
+julia> using LinearAlgebra
+
+julia> v = rand(4)
+4-element Vector{Float64}:
+ 0.7854497555209344
+ 0.525975466568693
+ 0.7358677162576746
+ 0.9209486228605595
+
+julia> v.^2
+4-element Vector{Float64}:
+ 0.6169313184478957
+ 0.27665019143215425
+ 0.5415012958302854
+ 0.8481463659487609
+
+julia> 1/v
+1×4 transpose(::Vector{Float64}) with eltype Float64:
+ 0.344008  0.230365  0.322293  0.403354
+
+julia>
